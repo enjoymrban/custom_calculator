@@ -1,175 +1,147 @@
-var secondNumber = false;
-var calFinish = false;
+var numbers = [];
 var kindofcalculation = "";
-
+var current = "";
 
 function pressButtonNumber(number) {
 
-    if (calFinish){
+    current = document.getElementById("numberField").innerHTML;
+    if (current === "undef") {
+        current = "";
+    }
+    current += number;
+    var testForNull = current.split('');
+    var i = 0;
 
-
-    }else{
-
-
-
-    if (secondNumber) {
-
-        document.getElementById("typeFieldNumbersOne").style.display = "none";
-
-        var typeField = document.getElementById("typeFieldNumbersTwo").innerHTML;
-        if (typeField == "0") {
-
-            document.getElementById("typeFieldNumbersTwo").innerHTML = number;
+    /*Deleting leading zeros */
+    for (; i < testForNull.length; i++) {
+        if (testForNull[i] === "0" && testForNull[i+1] !== "." && testForNull.length > 1) {
+            testForNull.splice(0, 1);
+            i = 0;
         } else {
-
-
-            document.getElementById("typeFieldNumbersTwo").innerHTML = typeField + number;
-
+            break;
         }
+    }
+
+    document.getElementById("numberField").innerHTML = testForNull.join("");
+
+
+}
+
+
+function empty() {
+
+    numbers = [];
+    document.getElementById("numberField").innerHTML = "0";
+    kindofcalculation = "";
+
+}
+
+function setPoint() {
+    current = document.getElementById("numberField").innerHTML;
+    if (checkForPoint(current)) {
 
     } else {
 
-        var typeField = document.getElementById("typeFieldNumbersOne").innerHTML;
-        if (typeField == "0") {
+        if (current === "0") {
+            current = "0."
+        } else (
+            current += "."
+        );
 
-            document.getElementById("typeFieldNumbersOne").innerHTML = number;
-        } else {
-
-
-            document.getElementById("typeFieldNumbersOne").innerHTML = typeField + number;
-
-        }
+        document.getElementById("numberField").innerHTML = current;
     }
 }
 
-}
-
-function setPoint(){
-
-
-
-    if(calFinish){}else{
-
-        var typeField = document.getElementById("typeFieldNumbersTwo").innerHTML;
-
-
-        if(secondNumber){
-
-            if(typeField ==""){
-
-                document.getElementById("typeFieldNumbersTwo").innerHTML = "0.";
-
-
-
-            }else{
-
-                document.getElementById("typeFieldNumbersTwo").innerHTML = typeField +".";
-
-            }
-
-
-
-        }else{
-
-            var typeField = document.getElementById("typeFieldNumbersOne").innerHTML;
-
-            if(typeField == ""){
-
-                document.getElementById("typeFieldNumbersOne").innerHTML = "0.";
-
-
-
-            }else{
-
-                document.getElementById("typeFieldNumbersOne").innerHTML =  typeField +".";
-
-            }
-
-
-
-
-
-        }
-
-
-
+function checkForPoint(current) {
+    var checkForPointArr = current.split("");
+    for (var i = 0; checkForPointArr.length > i; i++) {
+    if(checkForPointArr[i] === "."){
+        return true;
     }
-}
-
-function empty(){
-
-
-    document.getElementById("typeFieldNumbersOne").innerHTML = "";
-    document.getElementById("typeFieldNumbersTwo").innerHTML = "";
-    secondNumber = false;
-    calFinish = false;
-    kindofcalculation ="";
-    document.getElementById("typeFieldNumbersOne").style.display = "inline";
-
-
+    }
 
 }
 
 function specialKeys(key) {
 
-    if(key == 5){
 
-        var firstField = parseInt(document.getElementById("typeFieldNumbersOne").innerHTML);
-        var secondField = parseInt(document.getElementById("typeFieldNumbersTwo").innerHTML);
-        document.getElementById("typeFieldNumbersOne").innerHTML ="";
-        document.getElementById("typeFieldNumbersTwo").innerHTML ="";
-        secondNumber = false;
-        calFinish = true;
+    /*If key === 5 result is beeing calculated, else next number is added*/
+    if (key === 5) {
+        var result = "";
+        current = document.getElementById("numberField").innerHTML;
+        numbers.push(current);
 
-        switch (kindofcalculation){
+        switch (kindofcalculation) {
 
+            /*devide*/
             case 1:
+                result = devide(numbers[numbers.length - 2], numbers[numbers.length - 1]);
 
-
-                document.getElementById("typeFieldNumbersOne").innerHTML = (firstField/secondField).toString();
-                document.getElementById("typeFieldNumbersOne").style.display = "inline";
-                kindofcalculation ="";
                 break;
 
+            /*multiply*/
             case 2:
+                result = multiply(numbers[numbers.length - 2], numbers[numbers.length - 1]);
 
-                document.getElementById("typeFieldNumbersOne").innerHTML = (firstField*secondField).toString();
-                document.getElementById("typeFieldNumbersOne").style.display = "inline";
-                kindofcalculation ="";
                 break;
 
+            /*minus*/
             case 3:
+                result = minus(numbers[numbers.length - 2], numbers[numbers.length - 1]);
 
-                document.getElementById("typeFieldNumbersOne").innerHTML = (firstField-secondField).toString();
-                document.getElementById("typeFieldNumbersOne").style.display = "inline";
-                kindofcalculation ="";
                 break;
 
+            /*plus*/
             case 6:
+                result = plus(numbers[numbers.length - 2], numbers[numbers.length - 1]);
 
-                document.getElementById("typeFieldNumbersOne").innerHTML = (firstField+secondField).toString();
-                document.getElementById("typeFieldNumbersOne").style.display = "inline";
-                kindofcalculation ="";
+                break;
+
+            /*Default*/
+            default:
+
+                result = "ERROR";
+
                 break;
 
 
         }
+        document.getElementById("numberField").innerHTML = result.toFixed(5);
 
-
-
-
-    }else {
-
+    } else {
+        current = document.getElementById("numberField").innerHTML;
+        numbers.push(current);
         kindofcalculation = key;
-        secondNumber = true;
+        document.getElementById("numberField").innerHTML = "0";
 
     }
 
 
+}
 
-
+function devide(a, b) {
+    if (b === "0") {
+        return "undef";
+    } else {
+        return a / b;
     }
 
+}
+
+function multiply(a, b) {
+    return a * b;
+
+}
+
+function minus(a, b) {
+    return a - b;
+
+}
+
+function plus(a, b) {
+    return a + b;
+
+}
 
 
 
