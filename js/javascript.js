@@ -72,6 +72,7 @@ function specialKeys(key) {
         numbers.push(current);
 
 
+        //Calculations
         switch (kindofcalculation) {
 
 
@@ -99,7 +100,7 @@ function specialKeys(key) {
 
                 break;
 
-            /*Default*/
+            /*default*/
             default:
 
                 result = "ERROR";
@@ -108,6 +109,7 @@ function specialKeys(key) {
 
 
         }
+        //Show result
         document.getElementById("numberField").innerHTML = result.toFixed(5);
 
     } else {
