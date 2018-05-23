@@ -71,31 +71,31 @@ function specialKeys(key) {
         current = document.getElementById("numberField").innerHTML;
         numbers.push(current);
 
+
         switch (kindofcalculation) {
-         var firstNumber = numbers[numbers.length -2];
-         var secondNumber = numbers[numbers.length -1];
+
 
             /*devide*/
             case 1:
-                result = devide(firstNumber, secondNumber);
+                result = devide(numbers[numbers.length -2], numbers[numbers.length -1]);
 
                 break;
 
             /*multiply*/
             case 2:
-                result = multiply(firstNumber, secondNumber);
+                result = multiply(numbers[numbers.length -2], numbers[numbers.length -1]);
 
                 break;
 
             /*minus*/
             case 3:
-                result = minus(firstNumber, secondNumber);
+                result = minus(numbers[numbers.length -2], numbers[numbers.length -1]);
 
                 break;
 
             /*plus*/
             case 6:
-                result = plus(firstNumber, secondNumber);
+                result = plus(numbers[numbers.length -2], numbers[numbers.length -1]);
 
                 break;
 
