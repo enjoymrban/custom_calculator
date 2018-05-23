@@ -72,28 +72,30 @@ function specialKeys(key) {
         numbers.push(current);
 
         switch (kindofcalculation) {
+         var firstNumber = numbers[numbers.length -2];
+         var secondNumber = numbers[numbers.length -1];
 
             /*devide*/
             case 1:
-                result = devide(numbers[numbers.length - 2], numbers[numbers.length - 1]);
+                result = devide(firstNumber, secondNumber);
 
                 break;
 
             /*multiply*/
             case 2:
-                result = multiply(numbers[numbers.length - 2], numbers[numbers.length - 1]);
+                result = multiply(firstNumber, secondNumber);
 
                 break;
 
             /*minus*/
             case 3:
-                result = minus(numbers[numbers.length - 2], numbers[numbers.length - 1]);
+                result = minus(firstNumber, secondNumber);
 
                 break;
 
             /*plus*/
             case 6:
-                result = plus(numbers[numbers.length - 2], numbers[numbers.length - 1]);
+                result = plus(firstNumber, secondNumber);
 
                 break;
 
@@ -142,7 +144,3 @@ function plus(a, b) {
     return a + b;
 
 }
-
-
-
-
