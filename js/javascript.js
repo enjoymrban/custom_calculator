@@ -9,6 +9,7 @@ function pressButtonNumber(number) {
     // Increase the last result was undef or no other special key was pressed change empty current field!
     if (current === "undef") {
         current = "";
+        numbers.empty();
     }
     current += number;
     var testForNull = current.split('');
@@ -65,6 +66,9 @@ function checkForPoint(current) {
 }
 
 function specialKeys(key) {
+    if(numbers.length >1){
+
+    }
 
 
     /*If key === 5 result is beeing calculated, else next number is added*/
