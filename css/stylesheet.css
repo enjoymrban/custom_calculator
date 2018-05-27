@@ -15,25 +15,30 @@
 
 #calculator{
 
-    width: 221px;
-    height:349px;
+    width: 222px;
+    height: 349px;
     margin-top: -170px;
-    margin-left: -110px;
+    margin-left: -131px;
     position: absolute;
     top: 50%;
     left: 50%;
     padding: 20px;
+<<<<<<< HEAD
     background-color: grey;
+=======
+    background-color: slategrey;
+    border-radius: 20px;
+>>>>>>> b6a4316660ac5cd283f08fabee24deb4214b9c21
 
 
 
 
 }
 
-#calculator,
+
 .calculatorRow{
 
-    width: 221px ;
+    width: 222px ;
 
 
 

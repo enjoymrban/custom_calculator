@@ -5,6 +5,8 @@ var current = "";
 function pressButtonNumber(number) {
 
     current = document.getElementById("numberField").innerHTML;
+
+    // Increase the last result was undef or no other special key was pressed change empty current field!
     if (current === "undef") {
         current = "";
     }
@@ -71,33 +73,36 @@ function specialKeys(key) {
         current = document.getElementById("numberField").innerHTML;
         numbers.push(current);
 
+
+        //Calculations
         switch (kindofcalculation) {
+
 
             /*devide*/
             case 1:
-                result = devide(numbers[numbers.length - 2], numbers[numbers.length - 1]);
+                result = devide(numbers[numbers.length -2], numbers[numbers.length -1]);
 
                 break;
 
             /*multiply*/
             case 2:
-                result = multiply(numbers[numbers.length - 2], numbers[numbers.length - 1]);
+                result = multiply(numbers[numbers.length -2], numbers[numbers.length -1]);
 
                 break;
 
             /*minus*/
             case 3:
-                result = minus(numbers[numbers.length - 2], numbers[numbers.length - 1]);
+                result = minus(numbers[numbers.length -2], numbers[numbers.length -1]);
 
                 break;
 
             /*plus*/
             case 6:
-                result = plus(numbers[numbers.length - 2], numbers[numbers.length - 1]);
+                result = plus(numbers[numbers.length -2], numbers[numbers.length -1]);
 
                 break;
 
-            /*Default*/
+            /*default*/
             default:
 
                 result = "ERROR";
@@ -106,7 +111,24 @@ function specialKeys(key) {
 
 
         }
-        document.getElementById("numberField").innerHTML = result.toFixed(5);
+        //Round result to 5 decimal places and delete following zeros
+        var resultFixed = (result.toFixed(5)).split("");
+        var timesDeleted = 0;
+        for(var i = resultFixed.length-1; i >-1; i--){
+            if(resultFixed[i]==="0") {
+                resultFixed.splice(i, 1);
+                timesDeleted+=1;
+                if(timesDeleted === 5){
+                    resultFixed.splice(i-1,1);
+                }
+            }else{
+                timesDeleted = 0;
+                break;
+            }
+        }
+
+        //show result
+        document.getElementById("numberField").innerHTML = resultFixed.join("");
 
     } else {
         current = document.getElementById("numberField").innerHTML;
@@ -123,26 +145,22 @@ function devide(a, b) {
     if (b === "0") {
         return "undef";
     } else {
-        return a / b;
+        return parseInt(a) / parseInt(b);
     }
 
 }
 
 function multiply(a, b) {
-    return a * b;
+    return parseInt(a) * parseInt(b);
 
 }
 
 function minus(a, b) {
-    return a - b;
+    return parseInt(a) - parseInt(b);
 
 }
 
 function plus(a, b) {
-    return a + b;
+    return parseInt(a) + parseInt(b);
 
 }
-
-
-
-
