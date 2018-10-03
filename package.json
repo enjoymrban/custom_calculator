@@ -2,7 +2,7 @@
   "name": "custom_calculator",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/enjoymrban/custom_calculator/issues"
   },
-  "homepage": "https://github.com/enjoymrban/custom_calculator#readme"
+  "homepage": "https://github.com/enjoymrban/custom_calculator#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.3"
+  }
 }
