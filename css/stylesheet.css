@@ -76,6 +76,7 @@ html {
 }
 
 
+/* Animation by https://codepen.io/mike-schultz/pen/NgQvGO */
 #typeField {
     --borderWidth: 3px;
     border-radius: var(--borderWidth);
