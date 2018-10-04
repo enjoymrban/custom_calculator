@@ -110,3 +110,11 @@ html {
         background-position: 0% 50%;
     }
 }
+
+
+#doneBy{
+    position: relative;
+    text-align: center;
+    top: 720px;
+    color: rgb(121, 121, 121);
+}
