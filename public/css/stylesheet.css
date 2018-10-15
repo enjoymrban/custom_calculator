@@ -71,18 +71,18 @@ html {
     border-style: solid;
     border-color: silver;
     text-align: right;
-    overflow: auto;
+    overflow: hidden;
     background: -webkit-linear-gradient(left, #1C6EA4 0%, #2388CB 50%, #144E75 100%)
 }
 
 
 /* Animation by https://codepen.io/mike-schultz/pen/NgQvGO */
-#typeField {
+#calculator {
     --borderWidth: 3px;
     border-radius: var(--borderWidth);
 }
 
-#typeField:after {
+#calculator:after {
     content: '';
     position: absolute;
     top: calc(-1 * var(--borderWidth));

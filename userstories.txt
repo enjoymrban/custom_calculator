@@ -1,0 +1,10 @@
+#1 I want buttons with the numbers 0-9                              DONE
+#2 I want to be able to clear the current calculation               DONE
+#3 I want to multiply                                               DONE
+#4 I want to devide                                                 DONE
+#5 I want to substract                                              DONE
+#6 I want to add                                                    DONE
+#7 I want to see all my inputs                                      DONE
+#8 I want to evaluate the result                                    DONE
+#9 I want to put a decimal point
+#10 I want to see my past calculations
